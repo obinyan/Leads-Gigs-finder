@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gig Finder — Lead Ledger</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">§</span>
+    <h1>Gig Finder</h1>
+    <span class="brand-sub">lead ledger</span>
+  </div>
+  <div class="topbar-actions">
+    <span id="pollStatus" class="poll-status"></span>
+    <button id="pollBtn" class="btn btn-primary">Check for new leads</button>
+    <button id="addBtn" class="btn btn-ghost">+ Add a lead</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-group">
+      <h2>Status</h2>
+      <label><input type="radio" name="status" value="all" checked /> All</label>
+      <label><input type="radio" name="status" value="drafted" /> Ready to send</label>
+      <label><input type="radio" name="status" value="scored" /> Scored, no draft</label>
+      <label><input type="radio" name="status" value="applied" /> Applied</label>
+      <label><input type="radio" name="status" value="skipped" /> Skipped</label>
+      <label><input type="radio" name="status" value="rejected" /> Auto-rejected</label>
+    </div>
+    <div class="sidebar-group">
+      <h2>Sort by</h2>
+      <label><input type="radio" name="sort" value="score" checked /> Fit score</label>
+      <label><input type="radio" name="sort" value="date" /> Newest first</label>
+    </div>
+    <div class="sidebar-group sidebar-note">
+      <h2>Sources polled</h2>
+      <p>Freelancer.com &amp; Google Search run automatically.</p>
+      <p>Facebook, Threads &amp; X have no safe API for this — forward those leads in with <strong>+ Add a lead</strong>.</p>
+    </div>
+  </aside>
+
+  <main class="ledger" id="ledger">
+    <div class="empty-state" id="emptyState">
+      <p>No leads yet.</p>
+      <p>Click <strong>Check for new leads</strong> to poll Freelancer.com and Google Search, or add one manually.</p>
+    </div>
+  </main>
+</div>
+
+<dialog id="addDialog">
+  <form id="addForm">
+    <h2>Add a lead manually</h2>
+    <p class="dialog-hint">For gigs you spot on Facebook, Threads, X, or anywhere else without automated access.</p>
+    <label>Title <input type="text" name="title" required /></label>
+    <label>Description <textarea name="description" rows="4"></textarea></label>
+    <label>Link <input type="url" name="sourceUrl" placeholder="https://..." /></label>
+    <label>Budget / rate mentioned <input type="text" name="budget" placeholder="e.g. $500 fixed" /></label>
+    <label>Where you found it
+      <select name="source">
+        <option value="facebook">Facebook</option>
+        <option value="threads">Threads</option>
+        <option value="x">X / Twitter</option>
+        <option value="other">Other</option>
+      </select>
+    </label>
+    <div class="dialog-actions">
+      <button type="button" class="btn btn-ghost" id="cancelAdd">Cancel</button>
+      <button type="submit" class="btn btn-primary">Add &amp; score it</button>
+    </div>
+  </form>
+</dialog>
+
+<template id="leadRowTemplate">
+  <article class="lead">
+    <div class="lead-score-col">
+      <div class="lead-score">—</div>
+      <div class="lead-score-label">fit</div>
+    </div>
+    <div class="lead-body">
+      <div class="lead-head">
+        <h3 class="lead-title"></h3>
+        <span class="lead-source"></span>
+      </div>
+      <p class="lead-reason"></p>
+      <div class="lead-meta">
+        <span class="lead-budget"></span>
+        <span class="lead-posted"></span>
+        <span class="lead-status-pill"></span>
+      </div>
+      <details class="lead-details">
+        <summary>Full brief &amp; draft proposal</summary>
+        <p class="lead-description"></p>
+        <div class="draft-block">
+          <div class="draft-empty">No draft yet — this lead scored below the auto-draft threshold, or hasn't been scored.</div>
+          <textarea class="draft-text" rows="6" spellcheck="false"></textarea>
+          <div class="draft-actions">
+            <button class="btn btn-small copy-draft">Copy proposal</button>
+            <a class="btn btn-small open-link" target="_blank" rel="noopener">Open listing ↗</a>
+          </div>
+        </div>
+      </details>
+      <div class="lead-actions">
+        <button class="btn btn-small mark-applied">Mark applied</button>
+        <button class="btn btn-small mark-skipped">Skip</button>
+        <button class="btn btn-small btn-danger remove-lead">Remove</button>
+      </div>
+    </div>
+  </article>
+</template>
+
+<script src="app.js"></script>
+</body>
+</html>
