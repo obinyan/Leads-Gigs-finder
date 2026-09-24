@@ -116,7 +116,7 @@ file — no setup needed for local testing.
 
 | Platform | What this tool does |
 |---|---|
-| **Freelancer.com** | Polls the official API for leads. You still submit the bid yourself. |
+| **Freelancer.com** | Polls the official API for leads. You still submit the bid yourself. Access tokens are refreshed automatically once you've done the one-time OAuth login (see below) — the app persists the refreshed token to storage so it survives across requests. |
 | **Google Search** | Polls the official Custom Search API to catch gig posts on forums/blogs/boards. |
 | **Facebook, Threads** | No public API for searching posts by keyword, and their terms ban automated scraping or bot logins — accounts that try get banned. Not polled. Use **+ Add a lead** in the dashboard to forward anything you spot yourself; it still gets scored and drafted. |
 | **X / Twitter** | Has an official API, but the tier with meaningful search access is a paid plan. Not included by default — copy the pattern in `lib/googleSearch.js` if you're on a paid API tier. |
