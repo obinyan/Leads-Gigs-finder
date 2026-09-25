@@ -1,7 +1,7 @@
 # Gig Finder — lead ledger
 
 A small dashboard that finds freelance gig leads, scores them against your
-profile with Claude, and drafts a tailored proposal for the good ones — so
+profile with Gemini, and drafts a tailored proposal for the good ones — so
 applying is a 2-minute review-and-copy instead of an hour of searching.
 
 **It does not auto-submit anything.** You review every draft and click submit
@@ -56,7 +56,9 @@ to the project. Vercel then automatically injects `UPSTASH_REDIS_REST_URL` and
 
 In **Project Settings → Environment Variables**, add:
 
-- `ANTHROPIC_API_KEY`
+- `GEMINI_API_KEY`
+- `GEMINI_SCORE_MODEL` (optional)
+- `GEMINI_DRAFT_MODEL` (optional)
 - `FREELANCER_OAUTH_TOKEN`
 - `GOOGLE_API_KEY`
 - `GOOGLE_CSE_ID`

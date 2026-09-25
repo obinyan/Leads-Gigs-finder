@@ -1,7 +1,7 @@
 {
   "name": "gig-finder",
   "version": "1.0.0",
-  "description": "Finds and pre-drafts freelance gig leads from Freelancer.com and Google Search, scored and drafted by Claude. You review and submit manually.",
+  "description": "Finds and pre-drafts freelance gig leads from Freelancer.com and Google Search, scored and drafted by Gemini. You review and submit manually.",
   "type": "module",
   "main": "local-server.js",
   "scripts": {
