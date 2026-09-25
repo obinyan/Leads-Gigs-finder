@@ -1,5 +1,5 @@
 // Edit this file with your own details. Nothing here is sent anywhere except
-// to the Claude API (for scoring/drafting) and to your own search queries.
+// to the Gemini API (for scoring/drafting) and to your own search queries.
 
 export const profile = {
   // Short summary of who you are and what you do — used in every draft proposal.

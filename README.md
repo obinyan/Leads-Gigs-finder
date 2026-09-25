@@ -57,9 +57,7 @@ to the project. Vercel then automatically injects `UPSTASH_REDIS_REST_URL` and
 In **Project Settings → Environment Variables**, add:
 
 - `GEMINI_API_KEY`
-- `GEMINI_SCORE_MODEL` (optional)
-- `GEMINI_DRAFT_MODEL` (optional)
-- `FREELANCER_OAUTH_TOKEN`
+- `FREELANCER_CLIENT_ID`, `FREELANCER_CLIENT_SECRET`, `FREELANCER_REFRESH_TOKEN`
 - `GOOGLE_API_KEY`
 - `GOOGLE_CSE_ID`
 
